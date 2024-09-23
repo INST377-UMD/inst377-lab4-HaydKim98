@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+        <link rel="stylesheet" type="text/css" href="Lab4Layout.css">
+    </head>
+    <body>
+        <header>
+            <h1 id="page-title">INST377 - Lab 4</h1>
+        </header>
+
+        <div class="grid-container">
+            
+            <div class="content-box">
+                <form id="name-form" onsubmit="showAlert(event)">
+                    <label for="name">Name: </label>
+                    <input type="text" name="name" id="name" required> 
+                    <input type="submit" value="Alert Me!">
+                </form>
+            </div>
+
+            <div class="content-box">
+                <button id="change-color-btn" onclick="toggleColor()">Change Color</button>
+            </div>
+
+            <div class="content-box">
+                <form id="text-tester-form" onsubmit="validateText(event)">
+                    <label for="text-input">Text Tester: </label>
+                    <input type="text" id="text-input" required>
+                    <input type="submit" value="Validate Text">
+                </form>
+            </div>
+
+            <div class="content-box">
+                <button id="add-text-btn" onclick="addText()">Add Text</button>
+            </div>
+        </div>
+
+        <script>
+            
+            function showAlert(event) {
+                event.preventDefault();
+                const nameInput = document.getElementById('name').value;
+                if (nameInput) {
+                    alert(`Hi ${nameInput}!`);
+                }
+            }
+
+            function toggleColor() {
+                let currentColor = localStorage.getItem('backgroundColor');
+                if (currentColor === 'blue') {
+                    document.body.style.backgroundColor = "orange";
+                    localStorage.setItem('backgroundColor', 'orange');
+                } else {
+                    document.body.style.backgroundColor = "blue";
+                    localStorage.setItem('backgroundColor', 'blue');
+                }
+            }
+
+            window.onload = function() {
+                const savedColor = localStorage.getItem('backgroundColor');
+                if (savedColor) {
+                    document.body.style.backgroundColor = savedColor;
+                } else {
+                    document.body.style.backgroundColor = "blue";
+                    localStorage.setItem('backgroundColor', 'blue');
+                }
+            };
+
+            function validateText(event) {
+                event.preventDefault();
+                const textInput = document.getElementById('text-input').value;
+                const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if (validation.test(textInput)) {
+                    alert('Special character detected!');
+                } else {
+                    alert('Text is valid.');
+                }
+            }
+
+            function addText() {
+                const titleElement = document.getElementById('page-title');
+                titleElement.innerHTML += ' - Add Text';
+            }
+        </script>
+    </body>
+</html>

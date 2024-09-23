@@ -1,0 +1,49 @@
+body {
+    background-color: orange;
+    font-family: 'Times New Roman', serif;
+}
+
+header {
+    text-align: left;
+    margin: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+    margin: 10px 0; 
+    padding: 0;
+}
+
+.content-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgb(224, 122, 122);
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 80%
+   
+}
+
+#name-form,
+#text-tester-form {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    width: 50%; 
+}
+
+#name,
+#text-input {
+    flex: 1; 
+}
+
+input[type="submit"],
+#add-text-btn,
+#change-color-btn {
+    flex-shrink: 0; 
+    padding: 0px 5px; 
+}
